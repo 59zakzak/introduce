@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유곡초등학교 신나는 과학실 - 박해성 선생님</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        title: ['Jua', 'sans-serif'],
+                        body: ['Noto Sans KR', 'sans-serif'],
+                        cute: ['Gowun Dodum', 'sans-serif'],
+                    },
+                    colors: {
+                        science: {
+                            light: '#E0F2FE',
+                            DEFAULT: '#0284C7',
+                            dark: '#0369A1',
+                        },
+                        energy: {
+                            light: '#FEF3C7',
+                            DEFAULT: '#F59E0B',
+                            dark: '#D97706',
+                        },
+                        safety: {
+                            light: '#FEE2E2',
+                            DEFAULT: '#EF4444',
+                            dark: '#B91C1C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .font-title {
+            font-family: 'Jua', sans-serif;
+        }
+        /* Floating Animation for Hero Icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(12px) rotate(-5deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-float-reverse {
+            animation: float-reverse 5s ease-in-out infinite;
+        }
+        /* Custom Checkbox */
+        .pledge-checkbox:checked + div {
+            background-color: #EFF6FF;
+            border-color: #3B82F6;
+        }
+        .pledge-checkbox:checked + div .check-icon {
+            background-color: #3B82F6;
+            color: white;
+            border-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-amber-300 selection:text-slate-900">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-flask text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-sky-600 block leading-none">유곡초등학교</span>
+                    <span class="font-title text-xl text-slate-800 tracking-wide">신나는 과학실</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+                <a href="#intro" class="hover:text-sky-600 transition-colors py-2">선생님 소개</a>
+                <a href="#attitude" class="hover:text-sky-600 transition-colors py-2">우리의 태도</a>
+                <a href="#rules" class="hover:text-sky-600 transition-colors py-2">과학시간 약속</a>
+                <a href="#safety" class="hover:text-red-500 font-bold text-red-500 transition-colors py-2 flex items-center gap-1">
+                    <i class="fa-solid fa-shield-heart"></i> 안전 수칙
+                </a>
+                <a href="#pledge" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-full font-bold shadow-sm transition-all hover:shadow">
+                    안전 퀴즈 & 다짐
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <a href="#intro" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">선생님 소개</a>
+            <a href="#attitude" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">우리의 태도</a>
+            <a href="#rules" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600">과학시간 약속</a>
+            <a href="#safety" class="block px-3 py-2 rounded-lg text-base font-bold text-red-500 hover:bg-red-50">안전 수칙</a>
+            <a href="#pledge" class="block px-3 py-2 rounded-lg text-base font-bold bg-sky-500 text-white text-center mt-2">안전 퀴즈 & 다짐</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-sky-100 via-sky-50 to-slate-50 pt-12 pb-20 md:py-24">
+        <!-- Decorative Floating Icons -->
+        <div class="hidden lg:block absolute top-12 left-16 text-sky-300/60 text-6xl animate-float pointer-events-none">
+            <i class="fa-solid fa-atom"></i>
+        </div>
+        <div class="hidden lg:block absolute bottom-16 left-28 text-amber-300/70 text-5xl animate-float-reverse pointer-events-none">
+            <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <div class="hidden lg:block absolute top-20 right-24 text-emerald-300/60 text-6xl animate-float-reverse pointer-events-none">
+            <i class="fa-solid fa-microscope"></i>
+        </div>
+        <div class="hidden lg:block absolute bottom-12 right-16 text-purple-300/60 text-5xl animate-float pointer-events-none">
+            <i class="fa-solid fa-rocket"></i>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm border border-sky-200 text-sky-700 font-bold text-sm mb-6">
+                <span class="flex h-2.5 w-2.5 rounded-full bg-amber-400 animate-ping"></span>
+                유곡초등학교 3 · 4 · 5 · 6학년 과학 수업 안내
+            </div>
+            
+            <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-slate-800 leading-tight mb-6">
+                호기심은 <span class="text-amber-500 underline decoration-wavy decoration-amber-300 underline-offset-8">활짝!</span> 탐구는 <span class="text-sky-600">신나게!</span><br>
+                <span class="text-2xl sm:text-4xl md:text-5xl mt-3 block text-slate-700">안전하고 집중하는 유곡초 과학실</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 mb-10 leading-relaxed">
+                우리 주변의 신비로운 자연 현상과 과학 원리를 직접 실험하며 배우는 공간입니다.<br class="hidden sm:inline">
+                <strong>박해성 선생님</strong>과 함께 즐겁고 안전한 과학 여행을 떠날 준비가 되었나요?
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#attitude" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-sky-600/20 transition-all hover:-translate-y-0.5 flex items-center gap-2 text-lg">
+                    <span>과학실 안내 시작하기</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+                <a href="#safety" class="bg-white hover:bg-red-50 text-red-600 border-2 border-red-200 font-bold px-8 py-4 rounded-2xl shadow-sm transition-all hover:-translate-y-0.5 flex items-center gap-2 text-lg">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>실험실 안전수칙 보기</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Intro & Grade Tabs Section -->
+    <section id="intro" class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-sky-50 to-indigo-50 rounded-3xl p-6 sm:p-10 shadow-sm border border-sky-100">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <!-- Teacher Avatar Card -->
+                    <div class="w-full md:w-1/3 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-amber-300 to-sky-400 p-1 mb-4 shadow-md">
+                            <div class="w-full h-full bg-white rounded-full flex items-center justify-center text-5xl text-sky-600">
+                                <i class="fa-solid fa-user-astronaut"></i>
+                            </div>
+                        </div>
+                        <span class="bg-sky-100 text-sky-700 text-xs font-bold px-3 py-1 rounded-full mb-2">3~6학년 과학전담 교사</span>
+                        <h2 class="font-title text-3xl text-slate-800 mb-1">박해성 선생님</h2>
+                        <p class="text-sm text-slate-500 mb-4">"질문하는 학생이 가장 멋진 과학자입니다!"</p>
+                        <div class="w-full pt-4 border-t border-slate-100 flex justify-around text-xs text-slate-600 font-medium">
+                            <div class="flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-school text-sky-500 text-base"></i>
+                                <span>유곡초등학교</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-vial-circle-check text-emerald-500 text-base"></i>
+                                <span>과학실 담당</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <i class="fa-solid fa-heart text-rose-500 text-base"></i>
+                                <span>3~6학년 사랑</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Greeting & Interactive Grade Tabs -->
+                    <div class="w-full md:w-2/3">
+                        <h3 class="font-title text-2xl sm:text-3xl text-slate-800 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-hand-sparkles text-amber-500"></i>
+                            반가워요, 유곡초 꼬마 과학자 여러분!
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            안녕하세요! 올해 3, 4, 5, 6학년 여러분과 함께 과학 수업을 만들어갈 <strong>박해성 선생님</strong>입니다. 
+                            과학실은 교과서 속 글자가 눈앞에서 실제로 일어나는 마법 같은 공간이에요. 
+                            우리가 함께 웃고 떠들며 활발하게 토의하되, <strong>실험할 때만큼은 진짜 과학자처럼 진지하게 집중하고 안전을 지키는 멋진 시간</strong>을 만들어 보아요!
+                        </p>
+
+                        <!-- Grade Selector Tabs -->
+                        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+                            <div class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">내 학년을 눌러보세요!</div>
+                            <div class="grid grid-cols-4 gap-2 mb-4" id="grade-tabs">
+                                <button onclick="selectGrade(3)" class="grade-btn active-grade py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-sky-500 text-white shadow-sm" data-grade="3">3학년</button>
+                                <button onclick="selectGrade(4)" class="grade-btn py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-slate-100 text-slate-600 hover:bg-slate-200" data-grade="4">4학년</button>
+                                <button onclick="selectGrade(5)" class="grade-btn py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-slate-100 text-slate-600 hover:bg-slate-200" data-grade="5">5학년</button>
+                                <button onclick="selectGrade(6)" class="grade-btn py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-slate-100 text-slate-600 hover:bg-slate-200" data-grade="6">6학년</button>
+                            </div>
+                            <div id="grade-content" class="bg-sky-50/70 rounded-xl p-4 text-sm sm:text-base text-slate-700 border border-sky-100 min-h-[88px] flex items-center">
+                                <!-- Dynamic Content Loaded via JS -->
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">🌱</span>
+                                    <div>
+                                        <strong class="text-sky-700 block mb-0.5">과학을 처음 만나는 3학년 친구들!</strong>
+                                        과학실이 낯설고 신기하죠? 기초 실험 기구 사용법부터 자석, 동식물의 한살이까지 선생님과 차근차근 안전하게 배워보아요!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Attitude Section (Point 4 Emphasis) -->
+    <section id="attitude" class="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-amber-600 font-bold text-sm tracking-wider uppercase bg-amber-100 px-3 py-1 rounded-full">Core Attitude</span>
+            <h2 class="font-title text-3xl sm:text-4xl text-slate-800 mt-3 mb-3">
+                유곡초 과학실의 두 가지 약속: <span class="text-amber-500">활기참</span>과 <span class="text-sky-600">집중력</span>
+            </h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+                박해성 선생님의 과학 시간은 조용히만 있는 시간이 아니에요! <br class="hidden sm:inline">
+                <strong>언제 활기차야 하는지, 언제 집중해야 하는지</strong> 구분할 줄 아는 멋진 학생이 되어 봅시다.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Card 1: Bright & Energetic -->
+            <div class="bg-gradient-to-b from-amber-50 to-white rounded-3xl p-8 border-2 border-amber-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
+                <div class="w-14 h-14 rounded-2xl bg-amber-400 text-white flex items-center justify-center text-2xl shadow-md mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-face-laugh-beam"></i>
+                </div>
+                <div class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md mb-2">탐구 & 토의 시간에는</div>
+                <h3 class="font-title text-2xl sm:text-3xl text-slate-800 mb-4">밝고 활기차게 참여해요!</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    과학은 호기심에서 시작됩니다. 틀려도 괜찮으니 내 생각을 당당하게 말하고, 모둠 친구들과 신나게 의견을 나누세요.
+                </p>
+                <ul class="space-y-3 text-sm sm:text-base text-slate-700">
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-amber-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-amber-500 text-lg"></i>
+                        <span>"왜 그럴까?" 궁금한 점은 손들고 <strong>적극적으로 질문하기</strong></span>
+                    </li>
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-amber-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-amber-500 text-lg"></i>
+                        <span>모둠 토의 시간에는 <strong>밝은 표정과 활기찬 목소리</strong>로 대화하기</span>
+                    </li>
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-amber-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-amber-500 text-lg"></i>
+                        <span>친구의 발표에 <strong>따뜻한 박수와 호응</strong> 보내주기</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Safe & Focused -->
+            <div class="bg-gradient-to-b from-sky-50 to-white rounded-3xl p-8 border-2 border-sky-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
+                <div class="w-14 h-14 rounded-2xl bg-sky-600 text-white flex items-center justify-center text-2xl shadow-md mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div class="inline-block bg-sky-100 text-sky-800 text-xs font-bold px-2.5 py-1 rounded-md mb-2">설명 & 실험 시간에는</div>
+                <h3 class="font-title text-2xl sm:text-3xl text-slate-800 mb-4">안전을 지키며 레이저 집중!</h3>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    선생님이 실험 방법을 설명하실 때나 위험한 도구를 다룰 때는 장난기를 멈추고 눈과 귀를 선생님께 고정해야 합니다.
+                </p>
+                <ul class="space-y-3 text-sm sm:text-base text-slate-700">
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-sky-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-sky-600 text-lg"></i>
+                        <span>박해성 선생님의 신호(박수, 종소리)가 울리면 <strong>즉시 입을 다물고 시선 집중!</strong></span>
+                    </li>
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-sky-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-sky-600 text-lg"></i>
+                        <span>실험 기구를 다룰 때는 <strong>차분하고 신중한 태도</strong> 유지하기</span>
+                    </li>
+                    <li class="flex items-center gap-3 bg-white p-3 rounded-xl border border-sky-100 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-sky-600 text-lg"></i>
+                        <span>실험 결과를 놓치지 않도록 <strong>관찰에 온전히 몰입</strong>하기</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Classroom Signal Banner -->
+        <div class="mt-8 bg-slate-800 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center text-2xl font-bold shrink-0 animate-bounce">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div>
+                    <h4 class="font-title text-xl sm:text-2xl text-amber-300">박해성 선생님과의 집중 신호 약속!</h4>
+                    <p class="text-slate-300 text-sm sm:text-base mt-1">
+                        선생님이 <strong>"과학실 집중!"</strong>이라고 외치거나 종을 치면, 하던 행동을 모두 멈추고 <strong>두 손을 무릎에 놓은 뒤 선생님을 바라봅니다.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="shrink-0 bg-slate-700/80 px-4 py-2.5 rounded-xl border border-slate-600 text-center">
+                <span class="text-xs text-slate-400 block">목표 반응 시간</span>
+                <span class="font-title text-xl text-emerald-400">3초 이내 완료!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Class Etiquette (과학시간에 유의할 점) -->
+    <section id="rules" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-sky-600 font-bold text-sm tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">Class Guidelines</span>
+                <h2 class="font-title text-3xl sm:text-4xl text-slate-800 mt-3 mb-3">과학 시간에 꼭 유의할 점 4가지</h2>
+                <p class="text-slate-600">모두가 즐거운 과학 수업을 위해 수업 전부터 끝날 때까지 지켜야 할 기본 약속입니다.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-title text-3xl text-sky-200">01</span>
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-title text-xl text-slate-800 mb-2">수업 시작 전 준비</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            쉬는 시간에 미리 과학실로 이동해요. 복도에서는 조용히 걷고, <strong>과학 교과서, 실험관찰, 필기도구</strong>를 잊지 말고 챙겨옵니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-sky-600 flex items-center gap-1">
+                        <i class="fa-solid fa-check"></i> 종 치기 1분 전 착석 완료!
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-title text-3xl text-emerald-200">02</span>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-title text-xl text-slate-800 mb-2">모둠 친구와 협동</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            과학 실험은 혼자 하는 것이 아니에요. 나 혼자만 기구를 독차지하지 않고, <strong>역할을 나누어 모둠 친구 모두</strong>가 참여하도록 배려합니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-emerald-600 flex items-center gap-1">
+                        <i class="fa-solid fa-check"></i> 배려와 협동이 최고의 결과!
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-title text-3xl text-amber-200">03</span>
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-title text-xl text-slate-800 mb-2">정직하고 꼼꼼한 기록</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            실험 결과가 내 예상과 다르게 나와도 괜찮아요! 관찰한 사실 그대로를 <strong>실험관찰 책에 정성껏 글과 그림으로 기록</strong>합니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-amber-600 flex items-center gap-1">
+                        <i class="fa-solid fa-check"></i> 관찰 기록은 과학자의 기본!
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-title text-3xl text-purple-200">04</span>
+                            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-broom"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-title text-xl text-slate-800 mb-2">마무리 정리 정돈</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            유곡초의 모든 학년이 함께 쓰는 과학실입니다. 실험이 끝나면 <strong>기구를 씻어 제자리에 두고, 책상 위와 바닥을 깨끗이 정리</strong>합니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-purple-600 flex items-center gap-1">
+                        <i class="fa-solid fa-check"></i> 의자 넣기까지 완벽하게!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section (과학실 안전 수칙) -->
+    <section id="safety" class="py-16 sm:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-red-50 border-2 border-red-200 rounded-3xl p-6 sm:p-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-red-200 pb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+                            <i class="fa-solid fa-shield-halved"></i> SAFETY FIRST
+                        </div>
+                        <h2 class="font-title text-3xl sm:text-4xl text-slate-900">
+                            무엇보다 중요한 <span class="text-red-600">과학실 6대 안전 수칙</span>
+                        </h2>
+                    </div>
+                    <p class="text-sm sm:text-base text-slate-700 font-medium">
+                        재미있는 실험도 <strong>안전</strong>이 보장될 때만 가능합니다.<br class="hidden sm:inline">
+                        안전 수칙을 어기면 실험에 참여할 수 없으니 꼭 기억하세요!
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Safety 1 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-hand-paper"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">허락 없이 만지지 않기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                책상 위에 놓인 실험 기구나 약품은 박해성 선생님이 <strong>"시작하세요!"라고 말씀하시기 전까지 절대 손대지 않습니다.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Safety 2 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">뛰거나 장난치지 않기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                과학실에는 깨지기 쉬운 유리 기구와 뜨거운 물체가 많아요. <strong>절대 뛰어다니거나 친구를 밀치는 장난</strong>을 치지 않습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Safety 3 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-glasses"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">보호 장구 착용하기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                약품을 다루거나 가열 실험을 할 때는 <strong>보안경, 실험복, 실험용 장갑</strong>을 바르게 착용하고, 긴 머리는 묶습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Safety 4 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">맛보지 않고 바람으로 맡기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                어떤 물질이든 함부로 맛을 보지 않아요. 냄새를 맡을 때는 코를 직접 대지 않고 <strong>손으로 바람을 일으켜 살짝 맡습니다.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Safety 5 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">불과 전기 조심하기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                알코올램프나 가열 기구를 사용할 때는 <strong>일어서서 실험</strong>하며, 젖은 손으로 전기 콘센트를 절대 만지지 않습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Safety 6 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-2xs border border-red-100 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl shrink-0 mt-1">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">사고 발생 시 즉시 알리기</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                유리 기구가 깨지거나 약품이 피부에 묻으면 <strong>직접 치우려 하지 말고, 즉시 큰 소리로 박해성 선생님께 알립니다!</strong> (혼나지 않아요!)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz & Pledge Section -->
+    <section id="pledge" class="py-16 bg-gradient-to-b from-slate-100 to-sky-100/60 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="bg-sky-600 text-white font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Interactive Check</span>
+                <h2 class="font-title text-3xl sm:text-4xl text-slate-800 mt-3 mb-2">유곡초 꼬마 과학자 준비 점검!</h2>
+                <p class="text-slate-600">퀴즈를 풀고 다짐 서약서에 체크하여 과학실 입장 준비를 마쳐보세요.</p>
+            </div>
+
+            <!-- Part 1: Mini O/X Quiz -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-8">
+                <h3 class="font-title text-2xl text-slate-800 mb-6 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-amber-400 text-white flex items-center justify-center text-sm font-bold">Q</span>
+                    <span>헷갈리기 쉬운 과학실 O / X 퀴즈</span>
+                </h3>
+
+                <div class="space-y-4" id="quiz-container">
+                    <!-- Quiz Item 1 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="font-medium text-slate-800">
+                                <span class="font-bold text-sky-600 mr-1">문제 1.</span>
+                                과학실에 일찍 도착했을 때, 책상 위에 있는 실험 기구가 신기해서 미리 만져보며 연습한다.
+                            </p>
+                            <div class="flex gap-2 shrink-0">
+                                <button onclick="checkQuiz(1, true)" class="quiz-btn-1 w-14 py-2 rounded-xl font-title text-lg border-2 border-sky-200 bg-white text-sky-600 hover:bg-sky-50 transition-colors">O</button>
+                                <button onclick="checkQuiz(1, false)" class="quiz-btn-1 w-14 py-2 rounded-xl font-title text-lg border-2 border-rose-200 bg-white text-rose-600 hover:bg-rose-50 transition-colors">X</button>
+                            </div>
+                        </div>
+                        <div id="quiz-feedback-1" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+
+                    <!-- Quiz Item 2 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="font-medium text-slate-800">
+                                <span class="font-bold text-sky-600 mr-1">문제 2.</span>
+                                실수로 비커를 깨뜨렸을 때는 선생님께 혼날 수 있으니 친구들과 몰래 손으로 주워서 쓰레기통에 버린다.
+                            </p>
+                            <div class="flex gap-2 shrink-0">
+                                <button onclick="checkQuiz(2, true)" class="quiz-btn-2 w-14 py-2 rounded-xl font-title text-lg border-2 border-sky-200 bg-white text-sky-600 hover:bg-sky-50 transition-colors">O</button>
+                                <button onclick="checkQuiz(2, false)" class="quiz-btn-2 w-14 py-2 rounded-xl font-title text-lg border-2 border-rose-200 bg-white text-rose-600 hover:bg-rose-50 transition-colors">X</button>
+                            </div>
+                        </div>
+                        <div id="quiz-feedback-2" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+
+                    <!-- Quiz Item 3 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <p class="font-medium text-slate-800">
+                                <span class="font-bold text-sky-600 mr-1">문제 3.</span>
+                                모둠 토의 시간에는 밝고 활발하게 의견을 나누고, 선생님이 설명하실 때는 조용히 집중해서 듣는다.
+                            </p>
+                            <div class="flex gap-2 shrink-0">
+                                <button onclick="checkQuiz(3, true)" class="quiz-btn-3 w-14 py-2 rounded-xl font-title text-lg border-2 border-sky-200 bg-white text-sky-600 hover:bg-sky-50 transition-colors">O</button>
+                                <button onclick="checkQuiz(3, false)" class="quiz-btn-3 w-14 py-2 rounded-xl font-title text-lg border-2 border-rose-200 bg-white text-rose-600 hover:bg-rose-50 transition-colors">X</button>
+                            </div>
+                        </div>
+                        <div id="quiz-feedback-3" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 2: Interactive Pledge Checklist -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <h3 class="font-title text-2xl text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-medal text-sky-500"></i>
+                        <span>나는 자랑스러운 유곡초 과학자입니다! (다짐 체크)</span>
+                    </h3>
+                    <span id="pledge-count" class="text-sm font-bold text-sky-600 bg-sky-50 px-3 py-1 rounded-full">0 / 4 완료</span>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <label class="block cursor-pointer select-none">
+                        <input type="checkbox" class="pledge-checkbox sr-only" onchange="updatePledge()">
+                        <div class="p-4 rounded-2xl border-2 border-slate-200 transition-all flex items-center gap-3.5 hover:border-sky-300">
+                            <div class="check-icon w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-transparent transition-colors shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="font-medium text-slate-700 text-sm sm:text-base">박해성 선생님의 안내와 집중 신호에 귀를 기울이고 수업에 집중하겠습니다.</span>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer select-none">
+                        <input type="checkbox" class="pledge-checkbox sr-only" onchange="updatePledge()">
+                        <div class="p-4 rounded-2xl border-2 border-slate-200 transition-all flex items-center gap-3.5 hover:border-sky-300">
+                            <div class="check-icon w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-transparent transition-colors shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="font-medium text-slate-700 text-sm sm:text-base">과학실에서 절대 뛰거나 장난치지 않고, 안전 수칙을 최우선으로 지키겠습니다.</span>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer select-none">
+                        <input type="checkbox" class="pledge-checkbox sr-only" onchange="updatePledge()">
+                        <div class="p-4 rounded-2xl border-2 border-slate-200 transition-all flex items-center gap-3.5 hover:border-sky-300">
+                            <div class="check-icon w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-transparent transition-colors shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="font-medium text-slate-700 text-sm sm:text-base">모둠 친구들과 밝고 활기차게 토의하며 서로 배려하고 협동하겠습니다.</span>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer select-none">
+                        <input type="checkbox" class="pledge-checkbox sr-only" onchange="updatePledge()">
+                        <div class="p-4 rounded-2xl border-2 border-slate-200 transition-all flex items-center gap-3.5 hover:border-sky-300">
+                            <div class="check-icon w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-transparent transition-colors shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <span class="font-medium text-slate-700 text-sm sm:text-base">실험이 끝난 후에는 다음 학년 친구들을 위해 뒷정리를 깨끗하게 하겠습니다.</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Completion Banner (Hidden by default) -->
+                <div id="pledge-complete-banner" class="hidden bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-2xl p-6 text-center shadow-lg transition-all">
+                    <div class="text-4xl mb-2">🎉🔬🌟</div>
+                    <h4 class="font-title text-2xl sm:text-3xl mb-1">유곡초 명예 과학자 임명 완료!</h4>
+                    <p class="text-sky-100 text-sm sm:text-base">
+                        모든 준비를 마쳤군요! 과학실에서 박해성 선생님과 함께 신나고 안전한 수업을 시작해 보아요!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 text-white font-title text-lg mb-2">
+                <i class="fa-solid fa-flask text-sky-400"></i>
+                <span>유곡초등학교 과학실</span>
+            </div>
+            <p class="mb-4">3 · 4 · 5 · 6학년 과학전담 교사 <strong>박해성</strong></p>
+            <p class="text-xs text-slate-500">
+                "밝고 활기찬 호기심, 안전하고 바른 집중력이 멋진 과학자를 만듭니다."
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Grade Content Data
+        const gradeData = {
+            3: {
+                emoji: '🌱',
+                title: '과학을 처음 만나는 3학년 친구들!',
+                desc: '과학실이 낯설고 신기하죠? 기초 실험 기구 사용법부터 자석의 성질, 동식물의 한살이까지 선생님과 차근차근 안전하게 배워보아요!'
+            },
+            4: {
+                emoji: '🔍',
+                title: '관찰력이 쑥쑥 자라는 4학년 친구들!',
+                desc: '혼합물의 분리, 식물의 한살이, 물의 상태 변화 등 본격적인 실험이 많아지는 학년이에요. 안전 수칙을 잘 지키며 신나게 탐구해요!'
+            },
+            5: {
+                emoji: '🌡️',
+                title: '탐구 실력이 탄탄해지는 5학년 친구들!',
+                desc: '온도와 열, 용해와 용액, 다양한 생물과 우리 생활 등을 배워요. 가열 기구와 약품을 다루는 실험이 많으니 더욱 집중해 주세요!'
+            },
+            6: {
+                emoji: '🚀',
+                title: '유곡초의 든든한 최고 학년, 6학년 친구들!',
+                desc: '지구와 달의 운동, 여러 가지 기체, 전기의 이용, 연소와 소화 등 깊이 있는 과학 원리를 탐구합니다. 동생들에게 모범이 되는 멋진 태도를 기대해요!'
+            }
+        };
+
+        function selectGrade(grade) {
+            // Update Button Styles
+            document.querySelectorAll('.grade-btn').forEach(btn => {
+                if (parseInt(btn.dataset.grade) === grade) {
+                    btn.className = 'grade-btn py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-sky-500 text-white shadow-sm';
+                } else {
+                    btn.className = 'grade-btn py-2 px-3 rounded-xl font-title text-base sm:text-lg transition-all bg-slate-100 text-slate-600 hover:bg-slate-200';
+                }
+            });
+
+            // Update Content
+            const contentBox = document.getElementById('grade-content');
+            const data = gradeData[grade];
+            contentBox.innerHTML = `
+                <div class="flex items-start gap-3 animate-fadeIn">
+                    <span class="text-2xl">${data.emoji}</span>
+                    <div>
+                        <strong class="text-sky-700 block mb-0.5">${data.title}</strong>
+                        ${data.desc}
+                    </div>
+                </div>
+            `;
+        }
+
+        // O/X Quiz Answers & Explanations
+        const quizAnswers = {
+            1: {
+                answer: false,
+                correctMsg: '정답입니다! (X) 선생님의 안내와 허락이 있기 전에는 절대 실험 기구를 먼저 만지면 안 됩니다.',
+                wrongMsg: '아쉬워요! 정답은 X입니다. 실험 기구를 허락 없이 먼저 만지면 다치거나 기구가 고장 날 수 있어요.'
+            },
+            2: {
+                answer: false,
+                correctMsg: '정답입니다! (X) 유리 조각을 손으로 주우면 크게 다쳐요. 혼나지 않으니 즉시 박해성 선생님께 알려야 합니다!',
+                wrongMsg: '위험해요! 정답은 X입니다. 깨진 유리는 절대 직접 만지지 말고, 즉시 선생님께 큰 소리로 알려주세요.'
+            },
+            3: {
+                answer: true,
+                correctMsg: '정답입니다! (O) 토의할 때는 활기차게, 설명을 듣거나 실험할 때는 안전하고 집중하는 태도가 최고예요!',
+                wrongMsg: '다시 생각해 볼까요? 정답은 O입니다! 활기찬 참여와 진지한 집중력을 모두 갖춘 유곡초 학생이 되어보아요.'
+            }
+        };
+
+        function checkQuiz(qNum, userChoice) {
+            const feedbackEl = document.getElementById(`quiz-feedback-${qNum}`);
+            const quizInfo = quizAnswers[qNum];
+            const isCorrect = (userChoice === quizInfo.answer);
+
+            feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+            
+            if (isCorrect) {
+                feedbackEl.classList.add('bg-emerald-100', 'text-emerald-800');
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> ${quizInfo.correctMsg}`;
+            } else {
+                feedbackEl.classList.add('bg-rose-100', 'text-rose-800');
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5"></i> ${quizInfo.wrongMsg}`;
+            }
+        }
+
+        // Pledge Checklist Counter
+        function updatePledge() {
+            const checkboxes = document.querySelectorAll('.pledge-checkbox');
+            const total = checkboxes.length;
+            let checkedCount = 0;
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) checkedCount++;
+            });
+
+            const countEl = document.getElementById('pledge-count');
+            const bannerEl = document.getElementById('pledge-complete-banner');
+
+            countEl.textContent = `${checkedCount} / ${total} 완료`;
+
+            if (checkedCount === total) {
+                bannerEl.classList.remove('hidden');
+                countEl.className = 'text-sm font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full';
+            } else {
+                bannerEl.classList.add('hidden');
+                countEl.className = 'text-sm font-bold text-sky-600 bg-sky-50 px-3 py-1 rounded-full';
+            }
+        }
+    </script>
+</body>
+</html>
